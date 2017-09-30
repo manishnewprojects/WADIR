@@ -1,0 +1,64 @@
+m1hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+hr.style1{
+	border-top: 1px solid #8c8b8b;
+}
+
+
+hr.style2 {
+	background-color: #f0f0f0;
+  float: center;
+	border-top: 3px double #8c8b8b;
+}
+
+table.datatable tbody td.functions .function_buttons {
+  width: 70px;
+  height: 30px;
+  margin: 0 auto 0 auto;
+}
+table.datatable tbody td.functions .function_buttons li {
+  float: left;
+  padding: 0 10px 0 0;
+}
+table.datatable tbody td.functions .function_buttons li.function_delete {
+  padding: 0;
+}
+table.datatable tbody td.functions .function_buttons a {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background-color: #999;
+  font-family: 'FontAwesome', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  line-height: 29px;
+  text-align: center;
+  color: #fff;
+  -webkit-border-radius: 6px;
+  -moz-border-radius:    6px;
+  border-radius:         6px;
+}
+table.datatable tbody td.functions .function_buttons .function_edit a:before {
+  font-size: 1.1rem;
+  content: "\f040";
+}
+table.datatable tbody td.functions .function_buttons .function_delete a:before {
+  font-size: 1.2rem;
+  line-height: 30px;
+  content: "\f1f8";
+}
+table.datatable tbody td.functions .function_buttons a:hover,
+table.datatable tbody td.functions .function_buttons a:active,
+table.datatable tbody td.functions .function_buttons a:focus {
+  background-color: #333;
+}
+table.datatable tbody td.functions .function_buttons span {
+  display: none;
+}
+ 

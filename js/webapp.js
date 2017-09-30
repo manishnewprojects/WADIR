@@ -129,9 +129,52 @@ function send_values(position) {
 
   });
 
+var form_company = $('#form_company');
+  // Add company submit form
+  $(document).on('submit', '#form_company.update', function(e){
+     // Validate form 
+    e.preventDefault();
+    if (form_company.valid() == true){
+      // Send company information to database
+      var form_data = $('#form_company').serialize();
+      var request   = $.ajax({
+        url:          'php/data.php?job=edit_company',
+        cache:        false,
+        data:         form_data,
+        dataType:     'json',
+        contentType:  'application/json; charset=utf-8',
+        type:         'get'
+      });
+      
+      
+    }
+      request.done(function(output){
+          if (output.result == 'success'){
+            var dialog=JSON.stringify(form_data);
+            var dialog_name=dialog.substring(dialog.lastIndexOf("name=")+5,dialog.lastIndexOf("&city"));
+            dialog_name = dialog_name.replace(/\+/g," ");
+            dialog_name = dialog_name.replace(/\%2C/g,",");
+
+            var bootbox_message = 'Your business <b>'+ dialog_name +'</b> added succesfully!';
+            bootbox.alert(bootbox_message, 
+                        function(){
+                              window.open('http://whatsappdir.com', '_self');
+                        });
+          }
+         else {
+           
+          bootbox.alert("Add request failed1!");
+
+         }
+
+      });
+
+  });
+
 // Edit company button
   $(document).on('click', '.function_edit a', function(e){
     e.preventDefault();
+
     // Get company information from database
     var id      = $(this).data('id');
     var request = $.ajax({
@@ -144,8 +187,11 @@ function send_values(position) {
     });
 
     request.done(function(output){
+
       if (output.result == 'success'){
-        window.location.replace('edit_listing.php?company_curr_info='+output.data[0])
+      var company_curr_info=JSON.stringify(output.data[0]);
+      window.location.replace('edit_listing.php?company_curr_info=' + company_curr_info + '&id=' + id)
+
       } else {
         show_message('Information request failed', 'error');
       }

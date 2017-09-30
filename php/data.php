@@ -32,13 +32,13 @@ if (isset($_GET['job'])){
   } else {
     $job = '';
   }
-  file_put_contents('php://stderr', print_r($job, TRUE));
 }
 
 // Prepare array
 $mysql_data = array();
 
  
+
 // Valid job found
 if ($job != ''){
 
@@ -83,19 +83,12 @@ if ($job != ''){
     }  
  } elseif ($job == 'get_company') {
 
-  file_put_contents('php://stderr', print_r($id, TRUE));
-  file_put_contents('php://stderr', print_r("----", TRUE));
-
-
     // Get company
     if ($id == ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
       $query = "SELECT * FROM business_info WHERE business_id = '" . mysqli_real_escape_string($db_connection, $id) . "'";
-
-      file_put_contents('php://stderr', print_r($query, TRUE));
-     file_put_contents('php://stderr', print_r("----", TRUE));
 
       $query = mysqli_query($db_connection, $query);
 
@@ -154,6 +147,45 @@ if ($job != ''){
       $message = 'add success';
     }
 
+  } elseif ($job == 'edit_company'){
+
+    // Add company
+    $wa_only_numbers = preg_replace('/\D/', '', $_GET['whatsapp']);
+
+    // Add Lat/LONG
+    $lat_long_location = '';
+    $lat_long_location = $_GET['city'];
+    $lat_long_location .= ',';
+    $lat_long_location .= $_GET['locality'];
+
+    $array = lookup($lat_long_location);
+
+    // Add company
+    $query = "UPDATE business_info SET ";
+    if (isset($_GET['name']))       { $query .= "name     = '" . mysqli_real_escape_string($db_connection, $_GET['name'])     . "', "; }
+    if (isset($_GET['city']))       { $query .= "city     = '" . mysqli_real_escape_string($db_connection, $_GET['city'])     . "', "; }
+    if (isset($_GET['type']))       { $query .= "type     = '" . mysqli_real_escape_string($db_connection, $_GET['type'])     . "', "; }
+    if (isset($_GET['locality']))   { $query .= "locality = '" . mysqli_real_escape_string($db_connection, $_GET['locality']) . "', "; }
+    if (isset($_GET['owner']))      { $query .= "owner    = '" . mysqli_real_escape_string($db_connection, $_GET['owner'])    . "', "; }
+    if (isset($_GET['whatsapp']))   { $query .= "whatsapp = '" . mysqli_real_escape_string($db_connection, $wa_only_numbers)  . "', "; }
+
+    $query .= "latitude  =" . $array['latitude'] . ",";
+    $query .= "longitude  =" . $array['longitude'] ;
+    $query .= " WHERE business_id =" . mysqli_real_escape_string($db_connection, $_GET['id']);
+       
+    error_log(print_r($query, TRUE), 3, '/var/tmp/errors.log');
+
+    $query = mysqli_query($db_connection, $query);
+
+    if (!$query){
+      $result  = 'error';
+      $message = 'add error';
+
+    } else {
+      $result  = 'success';
+      $message = 'add success';
+    }
+
   } elseif ($job == 'delete_company'){
 
     // Delete company
@@ -197,7 +229,7 @@ if ($job != ''){
           "whatsapp_link"   => $company['whatsapp'],
           "latitude"        => $company['latitude'],
           "longitude"       => $company['longitude'],
-          "business_id"      => $company['business_id'],
+          "business_id"     => $company['business_id'],
           "functions"       => $functions
         );
       }  

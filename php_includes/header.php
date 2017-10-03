@@ -91,5 +91,17 @@
   });
 </script>
 
+<!-- GOOGLE CAPTCHA JS -->
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+<!-- <script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '6LcKtDIUAAAAAEKdBtVy0rn2JAX0QPB69qsNU3Nk'
+        });
+      };
+    </script> -->
+
 </head>
  

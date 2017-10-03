@@ -21,9 +21,6 @@
           <a href="edit_delete_listing.php" target="_blank"> Modify business listing </a>
       </li>
       <li>
-          <a href="mod_del_listing.php" target="_blank"> Delete business listing</a>
-      </li>
-      <li>
           <a rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/whatsappdir" target="_blank" class="btn btn-white btn-simple btn-just-icon">
             <i class="fa fa-twitter"></i>
           </a>

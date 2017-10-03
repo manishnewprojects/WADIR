@@ -173,7 +173,7 @@ if ($job != ''){
     $query .= "longitude  =" . $array['longitude'] ;
     $query .= " WHERE business_id =" . mysqli_real_escape_string($db_connection, $_GET['id']);
        
-    error_log(print_r($query, TRUE), 3, '/var/tmp/errors.log');
+    // error_log(print_r($query, TRUE), 3, '/var/tmp/errors.log');
 
     $query = mysqli_query($db_connection, $query);
 

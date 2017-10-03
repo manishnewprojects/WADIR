@@ -109,6 +109,7 @@ function send_values(position) {
       request.done(function(output){
           if (output.result == 'success'){
             var dialog=JSON.stringify(form_data);
+
             var dialog_name=dialog.substring(dialog.lastIndexOf("name=")+5,dialog.lastIndexOf("&city"));
             dialog_name = dialog_name.replace(/\+/g," ");
             dialog_name = dialog_name.replace(/\%2C/g,",");
@@ -148,14 +149,14 @@ var form_company = $('#form_company');
       
       
     }
-      request.done(function(output){
+    request.done(function(output){
           if (output.result == 'success'){
             var dialog=JSON.stringify(form_data);
             var dialog_name=dialog.substring(dialog.lastIndexOf("name=")+5,dialog.lastIndexOf("&city"));
             dialog_name = dialog_name.replace(/\+/g," ");
             dialog_name = dialog_name.replace(/\%2C/g,",");
 
-            var bootbox_message = 'Your business <b>'+ dialog_name +'</b> added succesfully!';
+            var bootbox_message = 'Listing for your business <b>'+ dialog_name +'</b> updated succesfully!';
             bootbox.alert(bootbox_message, 
                         function(){
                               window.open('http://whatsappdir.com', '_self');
@@ -172,7 +173,7 @@ var form_company = $('#form_company');
   });
 
 // Edit company button
-  $(document).on('click', '.function_edit a', function(e){
+$(document).on('click', '.function_edit a', function(e){
     e.preventDefault();
 
     // Get company information from database
@@ -201,6 +202,38 @@ var form_company = $('#form_company');
       show_message('Information request failed: ' + textStatus, 'error');
     });
   });
+
+// Edit company button
+$(document).on('click', '.function_delete a', function(e){
+    e.preventDefault();
+
+    // Get company information from database
+    var id      = $(this).data('id');
+    var request = $.ajax({
+      url:          'php/data.php?job=get_company',
+      cache:        false,
+      data:         'id=' + id,
+      dataType:     'json',
+      contentType:  'application/json; charset=utf-8',
+      type:         'get'
+    });
+
+    request.done(function(output){
+
+      if (output.result == 'success'){
+      var company_curr_info=JSON.stringify(output.data[0]);
+      window.location.replace('edit_listing.php?company_curr_info=' + company_curr_info + '&id=' + id)
+
+      } else {
+        show_message('Information request failed', 'error');
+      }
+    });
+
+    request.fail(function(jqXHR, textStatus){
+      show_message('Information request failed: ' + textStatus, 'error');
+    });
+  });
+
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //:::                                                                         :::

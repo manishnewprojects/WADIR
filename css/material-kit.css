@@ -3,6 +3,8 @@
 
  =========================================================
  * Material Kit - v1.1.1.0
+
+
  =========================================================
  
  * Product Page: http://www.creative-tim.com/product/material-kit
@@ -284,7 +286,7 @@ a .material-icons, a:hover .material-icons, a:focus .material-icons {
 .btn.btn-primary.btn-simple,
 .navbar .navbar-nav > li > a.btn.btn-primary.btn-simple {
   background-color: transparent;
-  color: #ffd464;
+  color: #033333; /* MV updated from yellow on 9/30/17 */
   box-shadow: none;
 }
 .btn.btn-primary.btn-simple:hover, .btn.btn-primary.btn-simple:focus, .btn.btn-primary.btn-simple:active,
@@ -292,7 +294,7 @@ a .material-icons, a:hover .material-icons, a:focus .material-icons {
 .navbar .navbar-nav > li > a.btn.btn-primary.btn-simple:focus,
 .navbar .navbar-nav > li > a.btn.btn-primary.btn-simple:active {
   background-color: transparent;
-  color: #ffd464;
+  color: #033333; /* MV updated from yellow on 9/30/17 */
 }
 .btn.btn-info,
 .navbar .navbar-nav > li > a.btn.btn-info {

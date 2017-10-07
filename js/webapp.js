@@ -92,7 +92,10 @@ function send_values(position) {
   $(document).on('submit', '#form_company.add', function(e){
     // Validate form 
     e.preventDefault();
+    grecaptcha.reset();
+    grecaptcha.execute();
     if (form_company.valid() == true){
+    
       // Send company information to database
       var form_data = $('#form_company').serialize();
       var request   = $.ajax({
@@ -117,7 +120,7 @@ function send_values(position) {
             var bootbox_message = 'Your business <b>'+ dialog_name +'</b> added succesfully!';
             bootbox.alert(bootbox_message, 
                         function(){
-                              window.open('http://whatsappdir.com', '_self');
+                              window.open('http://phonezoo.com', '_self');
                         });
           }
          else {
@@ -129,6 +132,11 @@ function send_values(position) {
       });
 
   });
+
+
+function formSubmit() {
+  // submit the form which now includes a g-recaptcha-response input
+}
 
 var form_company = $('#form_company');
   // Add company submit form
@@ -159,7 +167,7 @@ var form_company = $('#form_company');
             var bootbox_message = 'Listing for your business <b>'+ dialog_name +'</b> updated succesfully!';
             bootbox.alert(bootbox_message, 
                         function(){
-                              window.open('http://whatsappdir.com', '_self');
+                              window.open('http://phonezoo.com', '_self');
                         });
           }
          else {
@@ -171,6 +179,57 @@ var form_company = $('#form_company');
       });
 
   });
+
+
+// FUNCTION TO PROCESS DELETE FROM EDIT_DELETE_LISTING.PHP
+
+var form_company = $('#form_company');
+  // Add company submit form
+  $(document).on('submit', '#form_company.delete', function(e){
+     // Validate form 
+    e.preventDefault();
+    if (form_company.valid() == true){
+      // Send company information to database
+      var form_data = $('#form_company').serialize();
+      var request   = $.ajax({
+        url:          'php/data.php?job=delete_company',
+        cache:        false,
+        data:         form_data,
+        dataType:     'json',
+        contentType:  'application/json; charset=utf-8',
+        type:         'get'
+      });
+      
+      
+    }
+    request.done(function(output){
+          if (output.result == 'success'){
+            var dialog=JSON.stringify(form_data);
+            var dialog_name=dialog.substring(dialog.lastIndexOf("name=")+5,dialog.lastIndexOf("&city"));
+            dialog_name = dialog_name.replace(/\+/g," ");
+            dialog_name = dialog_name.replace(/\%2C/g,",");
+
+            var bootbox_message = 'Listing for your business <b>'+ dialog_name +'</b> DELETED!';
+            bootbox.alert(bootbox_message, 
+                        function(){
+                              window.open('http://phonezoo.com', '_self');
+                        });
+          }
+         else {
+           
+          bootbox.alert("Add request failed1!");
+
+         }
+
+      });
+
+  });
+
+String.prototype.escapeSpecialChars = function() {
+    return this.replace(/&/g,"%26");
+               
+ };
+
 
 // Edit company button
 $(document).on('click', '.function_edit a', function(e){
@@ -190,7 +249,15 @@ $(document).on('click', '.function_edit a', function(e){
     request.done(function(output){
 
       if (output.result == 'success'){
-      var company_curr_info=JSON.stringify(output.data[0]);
+      var company_curr_info_parsed=JSON.stringify(output.data[0]);
+
+      //console.log(company_curr_info_parsed);
+
+      var company_curr_info = company_curr_info_parsed.escapeSpecialChars();
+
+      //console.log(company_curr_info);
+
+
       window.location.replace('edit_listing.php?company_curr_info=' + company_curr_info + '&id=' + id)
 
       } else {
@@ -222,7 +289,7 @@ $(document).on('click', '.function_delete a', function(e){
 
       if (output.result == 'success'){
       var company_curr_info=JSON.stringify(output.data[0]);
-      window.location.replace('edit_listing.php?company_curr_info=' + company_curr_info + '&id=' + id)
+      window.location.replace('delete_listing.php?company_curr_info=' + company_curr_info + '&id=' + id)
 
       } else {
         show_message('Information request failed', 'error');

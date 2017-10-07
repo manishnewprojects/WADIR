@@ -193,7 +193,11 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "DELETE FROM business_info WHERE company_id = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+      $query = "DELETE FROM business_info WHERE business_id = '" . mysqli_real_escape_string($db_connection, $_GET['id']) . "'";
+
+      //error_log(print_r($query, TRUE), 3, '/var/tmp/errors.log');
+
+
       $query = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';

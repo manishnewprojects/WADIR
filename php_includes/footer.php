@@ -6,8 +6,8 @@
           <nav class="pull-left">
               <ul>
           <li>
-            <a href="http://www.whatsappdir.com">
-              WhatsApp Dir
+            <a href="http://www.whats411.com">
+              Whats411.com
             </a>
           </li>
           <li>
@@ -16,7 +16,7 @@
             </a>
           </li>
          <!-- <li>
-            <a href="http://blog.whatsappdir.com">
+            <a href="http://blog.whats411.com">
                Blog
             </a>
           </li> -->

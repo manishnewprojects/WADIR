@@ -6,9 +6,9 @@ include dirname(__FILE__)."/../php_includes/addr_lookup.php";
 // Database details
 $db_server   = 'localhost';
 $db_username = 'root';
-//$db_password = 'Wu5nO1CxATzf';
+//$db_password = 'EHI4qackJBRK';
 $db_password = '120+Skipper';
-$db_name     = 'wadir_business';
+$db_name     = 'w411_listings_database';
 
 // Get job (and id)
 $job = '';
@@ -68,7 +68,7 @@ if ($job != ''){
         $wa_str = '';
         $wa_str = '<a href="https://api.whatsapp.com/send?phone=';
         $wa_str .= $company['whatsapp'];
-        $wa_str .= '&text=New customer! Response requested"> Click to message</a>';
+        $wa_str .= '&text=New customer query via whats411.com! Response requested"> Click to message</a>';
         $mysql_data[] = array(
           "name"            => $company['name'],
           "owner"           => $company['owner'],
@@ -136,7 +136,12 @@ if ($job != ''){
     $query .= "latitude  =" . $array['latitude'] . ",";
     $query .= "longitude  =" . $array['longitude'] ;
 
+   // error_log(print_r($query, TRUE), 3, '/var/tmp/errors.log');
+
     $query = mysqli_query($db_connection, $query);
+
+   // error_log("RESULT", 3, '/var/tmp/errors.log');
+   // error_log(print_r($query, TRUE), 3, '/var/tmp/errors.log');
 
     if (!$query){
       $result  = 'error';

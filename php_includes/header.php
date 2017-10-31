@@ -5,8 +5,8 @@
 
 <!-- Basic Page Needs -->
   <meta charset="utf-8">
-  <title> WhatsApp Directory </title>
-  <meta name="description" content="Global whatsapp small business directory">
+  <title> Whats411.com - World's first WhatsApp business directory </title>
+  <meta name="description" content="Whatsapp business directory">
   <meta name="author" content="@fantasticmv">
 
 <!-- Favicon -->
@@ -45,7 +45,6 @@
   <script charset="utf-8" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.min.js"></script> 
   <script charset="utf-8" type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script> 
   <script charset="utf-8" type="text/javascript" src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script> 
-  <script charset="utf-8" type="text/javascript" src="js/dataTables.editor.min.js"></script> 
    
 
 <!-- Latest compiled JavaScript -->
@@ -56,11 +55,11 @@
 
 
 <!-- Local JS --> 
-<script charset="utf-8" type="text/javascript" src="js/webapp.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/w411app.js"></script>
  
 
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="js/nouislider.min.js" type="text/javascript"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ 
+  <script src="js/nouislider.min.js" type="text/javascript"></script>-->
 
   <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
   <script src="js/material-kit.js" type="text/javascript"></script>

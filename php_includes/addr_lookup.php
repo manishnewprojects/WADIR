@@ -12,16 +12,31 @@ function lookup($string){
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
    $response = json_decode(curl_exec($ch), true);
  
+    // error logging block - leave here for use in other places - mv 10/17/17
+    //error_log("GOGL RESULT", 3, '/var/tmp/errors.log');
+    //error_log(print_r($response, TRUE), 3, '/var/tmp/errors.log');
+    //error_log("GOGL RESULT", 3, '/var/tmp/errors.log');
 
-   // If Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST
+
+// If Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST
    if ($response['status'] != 'OK') {
-    return null;
+    $latitude = -76;
+    $longitude = -148;
+    $array = array(
+        'latitude' => $latitude,
+        'longitude' => $longitude,
+        'location_type' => 0,
+    );
+
+    return $array;
    }
  
-   $geometry = $response['results'][0]['geometry'];
+  $geometry = $response['results'][0]['geometry'];
  
-    $latitude = $geometry['location']['lat'];
-    $longitude = $geometry['location']['lng'];
+  $latitude = $geometry['location']['lat'];
+  $longitude = $geometry['location']['lng'];
+
+
  
     $array = array(
         'latitude' => $geometry['location']['lng'],

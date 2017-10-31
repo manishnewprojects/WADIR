@@ -57,7 +57,10 @@ function send_values(position) {
                 "searchable": false,
             },
     ],
-    "order":[[8,'asc']]
+    "order":[[8,'asc']],
+    "language": {
+          "processing": "<img src='img/loading.gif'> Loading businessess...",
+    }
   });
 
 }
@@ -86,18 +89,75 @@ function send_values(position) {
     "order":[[1,'asc']]
   });
 
- var form_company = $('#form_company');
-  
-  // Add company submit form
-  $(document).on('submit', '#form_company.add', function(e){
+ var form_company = $('#form_company'); 
+
+// Add company submit form
+
+
+$('#send_button').click( function() {       
+  $("#form_company").validate({              
+    rules: {
+      whatsapp: {
+        required: true,
+        phonecheck: true
+      }
+    }
+  }).form(); 
+});
+
+$.validator.addMethod("phonecheck", 
+                       function(value, element){
+                          console.log (element.value);
+                          var access_key = '2f5fa0093e2cc0e3efa308356180f644';
+
+                          // verify phone number via AJAX call
+                          var phone_check = $.ajax({
+                            url: 'http://apilayer.net/api/validate?access_key=' + access_key + '&number=' + element.value,   
+                            dataType: 'json',
+                            success: function(json) {
+                              console.log("Got here1", json.line_type );
+                              if (json.line_type == 'mobile')
+                                return true;
+                            }
+
+                          });
+
+                         // function check_phone_validity(response){
+                         // console.log("Got here1", response );
+                         // console.log("Got here2", response );
+                           
+                          // if response === "mobile"
+                          //return true;
+
+                          //}
+
+                          //return check_phone_validity();
+
+                          return phone_check;
+
+                       }, 
+                       "Please enter a valid phone number");
+
+ 
+
+$(document).on('submit', '#form_company.add', function(e){
     // Validate form 
+    //grecaptcha.reset();
+    //grecaptcha.execute();
+
     e.preventDefault();
-    grecaptcha.reset();
-    grecaptcha.execute();
-    if (form_company.valid() == true){
+    var form_data = $('#form_company').serialize();
+    var form_fields=JSON.stringify(form_data);
+    var whatsapp_entered = form_fields.substring(form_fields.lastIndexOf("whatsapp=")+9,form_fields.lastIndexOf("&id"));
+
+  
+
+ 
+    if (form_company.valid() == true) {
     
       // Send company information to database
-      var form_data = $('#form_company').serialize();
+
+
       var request   = $.ajax({
         url:          'php/data.php?job=add_company',
         cache:        false,
@@ -109,6 +169,7 @@ function send_values(position) {
       
       
     }
+
       request.done(function(output){
           if (output.result == 'success'){
             var dialog=JSON.stringify(form_data);
@@ -167,7 +228,7 @@ var form_company = $('#form_company');
             var bootbox_message = 'Listing for your business <b>'+ dialog_name +'</b> updated succesfully!';
             bootbox.alert(bootbox_message, 
                         function(){
-                              window.open('http://phonezoo.com', '_self');
+                              window.open('http://whats411.com', '_self');
                         });
           }
          else {
@@ -180,6 +241,7 @@ var form_company = $('#form_company');
 
   });
 
+ 
 
 // FUNCTION TO PROCESS DELETE FROM EDIT_DELETE_LISTING.PHP
 
@@ -212,7 +274,7 @@ var form_company = $('#form_company');
             var bootbox_message = 'Listing for your business <b>'+ dialog_name +'</b> DELETED!';
             bootbox.alert(bootbox_message, 
                         function(){
-                              window.open('http://phonezoo.com', '_self');
+                              window.open('http://whats411.com', '_self');
                         });
           }
          else {
@@ -345,63 +407,6 @@ function distance(lat1, lon1, lat2, lon2, unit) {
   }
 
 
-// MISC OUTPUT FUNCTIONS 
 
- // Show message
-  function show_message(message_text, message_type){
-    $('#message').html('<p>' + message_text + '</p>').attr('class', message_type);
-    $('#message_container').show();
-    if (typeof timeout_message !== 'undefined'){
-      window.clearTimeout(timeout_message);
-    }
-    timeout_message = setTimeout(function(){
-      hide_message();
-    }, 8000);
-  }
-  // Hide message
-  function hide_message(){
-    $('#message').html('').attr('class', '');
-    $('#message_container').hide();
-  }
-
-  // Show loading message
-  function show_loading_message(){
-    $('#loading_container').show();
-  }
-  // Hide loading message
-  function hide_loading_message(){
-    $('#loading_container').hide();
-  }
-
-  // Show lightbox
-  function show_lightbox(){
-    $('.lightbox_bg').show();
-    $('.lightbox_container').show();
-  }
-  // Hide lightbox
-  function hide_lightbox(){
-    $('.lightbox_bg').hide();
-    $('.lightbox_container').hide();
-  }
-  // Lightbox background
-  $(document).on('click', '.lightbox_bg', function(){
-    hide_lightbox();
-  });
-  // Lightbox close button
-  $(document).on('click', '.lightbox_close', function(){
-    hide_lightbox();
-  });
-  // Escape keyboard key
-  $(document).keyup(function(e){
-    if (e.keyCode == 27){
-      hide_lightbox();
-    }
-  });
-  
-  // Hide iPad keyboard
-  function hide_ipad_keyboard(){
-    document.activeElement.blur();
-    $('input').blur();
-  }
 
 });

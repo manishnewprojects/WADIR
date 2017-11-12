@@ -55,43 +55,10 @@
 
 
 <!-- Local JS --> 
-<script charset="utf-8" type="text/javascript" src="js/w411app.js"></script>
+<script charset="utf-8" type="text/javascript" src="test_phone.js"></script>
  
 
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ 
-  <script src="js/nouislider.min.js" type="text/javascript"></script>-->
-
-  <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-  <script src="js/material-kit.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-          $().ready(function(){
-            // the body of this function is in js/material-kit.js
-            materialKit.initSliders();
-            window_width = $(window).width();
-            if (window_width >= 992){
-                big_image = $('.wrapper > .header');
-                (window).on('scroll', materialKitDemo.checkScrollForParallax);
-            }
-          });
-</script>
-
-<!-- Google Maps API  AIzaSyAQYDH6cEPDmnK6f1Hl2NHqWcRPUIftGJs -->
-
-
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQYDH6cEPDmnK6f1Hl2NHqWcRPUIftGJs"></script>
-
-<script async 
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-9331817746326065",
-    enable_page_level_ads: true
-  });
-</script>
-
-<!-- GOOGLE CAPTCHA JS -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  
 
 
 </head>

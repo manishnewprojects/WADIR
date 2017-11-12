@@ -50,17 +50,34 @@ function send_values(position) {
         "render" : function (data, type, row) { return (distance(data["longitude"],data["latitude"],position.lat, position.lng)); }
       }
     ],
+
     "columnDefs": [
             {
                 "targets": [ 6,7,8 ],
                 "visible": false,
                 "searchable": false,
             },
+            {
+                "targets": 3,
+                render: function ( data, type, row ) {
+                    return data.substr( 0, 15 );
+                }
+            },
+            {
+                "targets": 2,
+                render: function ( data, type, row ) {
+                    return data.substr( 0, 20 );
+                }
+            }
     ],
     "order":[[8,'asc']],
+    "processing": true,
     "language": {
-          "processing": "<img src='img/loading.gif'> Loading businessess...",
-    }
+          "processing": '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading..n.</span> ',
+          "searchPlaceholder": "Wedding, Courier, Plumber ...."
+
+      },
+      
   });
 
 }
@@ -94,51 +111,11 @@ function send_values(position) {
 // Add company submit form
 
 
-$('#send_button').click( function() {       
-  $("#form_company").validate({              
-    rules: {
-      whatsapp: {
-        required: true,
-        phonecheck: true
-      }
-    }
-  }).form(); 
-});
 
-$.validator.addMethod("phonecheck", 
-                       function(value, element){
-                          console.log (element.value);
-                          var access_key = '2f5fa0093e2cc0e3efa308356180f644';
 
-                          // verify phone number via AJAX call
-                          var phone_check = $.ajax({
-                            url: 'http://apilayer.net/api/validate?access_key=' + access_key + '&number=' + element.value,   
-                            dataType: 'json',
-                            success: function(json) {
-                              console.log("Got here1", json.line_type );
-                              if (json.line_type == 'mobile')
-                                return true;
-                            }
 
-                          });
+  
 
-                         // function check_phone_validity(response){
-                         // console.log("Got here1", response );
-                         // console.log("Got here2", response );
-                           
-                          // if response === "mobile"
-                          //return true;
-
-                          //}
-
-                          //return check_phone_validity();
-
-                          return phone_check;
-
-                       }, 
-                       "Please enter a valid phone number");
-
- 
 
 $(document).on('submit', '#form_company.add', function(e){
     // Validate form 
@@ -146,52 +123,101 @@ $(document).on('submit', '#form_company.add', function(e){
     //grecaptcha.execute();
 
     e.preventDefault();
+
+
+  
+
     var form_data = $('#form_company').serialize();
     var form_fields=JSON.stringify(form_data);
     var whatsapp_entered = form_fields.substring(form_fields.lastIndexOf("whatsapp=")+9,form_fields.lastIndexOf("&id"));
 
-  
+                          // verify phone number via AJAX call
+                          
+
+              
+   form_fully_valid = 0;
 
  
     if (form_company.valid() == true) {
     
       // Send company information to database
 
+                          var access_key = '2f5fa0093e2cc0e3efa308356180f644';
 
-      var request   = $.ajax({
-        url:          'php/data.php?job=add_company',
-        cache:        false,
-        data:         form_data,
-        dataType:     'json',
-        contentType:  'application/json; charset=utf-8',
-        type:         'get'
-      });
-      
-      
-    }
+                          var phone_check=$.ajax(
+                            {
+                            url: 'https://apilayer.net/api/validate?access_key=' + access_key + '&number=' + whatsapp_entered,   
+                            dataType: 'json',
+                           }
 
-      request.done(function(output){
-          if (output.result == 'success'){
-            var dialog=JSON.stringify(form_data);
 
-            var dialog_name=dialog.substring(dialog.lastIndexOf("name=")+5,dialog.lastIndexOf("&city"));
-            dialog_name = dialog_name.replace(/\+/g," ");
-            dialog_name = dialog_name.replace(/\%2C/g,",");
+                            ).done(function(result){
 
-            var bootbox_message = 'Your business <b>'+ dialog_name +'</b> added succesfully!';
-            bootbox.alert(bootbox_message, 
-                        function(){
-                              window.open('http://phonezoo.com', '_self');
-                        });
-          }
-         else {
-           
-          bootbox.alert("Add request failed1!");
+                            //console.log("phone_check", phone_check);
+                            //console.log("result", result);
 
-         }
 
-      });
+                             var phone_details=JSON.stringify(result);
 
+                            //console.log("phone_detils", phone_details);
+                            
+                           var line_type=phone_details.substring(phone_details.lastIndexOf("line_type")+12,phone_details.lastIndexOf("}")-1);
+                              //console.log("lintyoe", line_type);
+
+                              if (line_type == "mobile") form_fully_valid =1;
+
+
+                              if (form_fully_valid) {
+
+                                var request   = $.ajax({
+                                      url:          'php/data.php?job=add_company',
+                                      cache:        false,
+                                      data:         form_data,
+                                      dataType:     'json',
+                                      contentType:  'application/json; charset=utf-8',
+                                      type:         'get'
+                                    });
+                                    
+                                    
+                                 
+
+                                    request.done(function(output){
+                                        if (output.result == 'success'){
+                                          var dialog=JSON.stringify(form_data);
+
+                                          var dialog_name=dialog.substring(dialog.lastIndexOf("name=")+5,dialog.lastIndexOf("&city"));
+                                          dialog_name = dialog_name.replace(/\+/g," ");
+                                          dialog_name = dialog_name.replace(/\%2C/g,",");
+
+                                          var bootbox_message = 'Your business <b>'+ dialog_name +'</b> added succesfully!';
+                                          bootbox.alert(bootbox_message, 
+                                                      function(){
+                                                            window.open('http://whats411.com', '_self');
+                                                      });
+                                        }
+                                       else {
+                                         
+                                        bootbox.alert("Add request failed1!");
+
+                                       }
+
+                                    });
+                                   } // IF FORM_FULLY_VALID
+
+                                   else
+                                   {
+                                      bootbox.alert("Enter a valid mobile number");
+
+                                   }
+                            
+                            }).fail(function() {
+                               console.log( "error - phone check failed" );
+                             } );
+                         
+
+     }
+
+     
   });
 
 

@@ -1,7 +1,7 @@
 <!-- Material Kit Navbar -->
 
-<nav class="navbar navbar-fixed-top navbar-color-on-scroll">
-  <div class="container">
+<nav class="navbar navbar-fixed-top">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-index">
       <span class="sr-only">Toggle navigation</span>
@@ -9,7 +9,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php"> <img src="images/whats411header.png"></a> 
+      <a class="navbar-left" href="index.php"> <img style="  width: 250px;" src="images/w411-banner.png" </a> 
     </div>
     <div id="navigation-index" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">

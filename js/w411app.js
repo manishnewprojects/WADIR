@@ -108,9 +108,6 @@ function send_values(position) {
 
  var form_company = $('#form_company'); 
 
-// Add company submit form
-
-
 
 
 
@@ -118,10 +115,7 @@ function send_values(position) {
 
 
 $(document).on('submit', '#form_company.add', function(e){
-    // Validate form 
-    //grecaptcha.reset();
-    //grecaptcha.execute();
-
+    
     e.preventDefault();
 
 
@@ -135,10 +129,15 @@ $(document).on('submit', '#form_company.add', function(e){
                           
 
               
-   form_fully_valid = 0;
+   form_fully_valid = 0; captcha_valid = 1;
+   // Validate form 
+    grecaptcha.reset();
+    grecaptcha.execute();
 
- 
-    if (form_company.valid() == true) {
+
+    console.log("captcha_valid", captcha_valid);
+
+    if ((form_company.valid() == true) && (captcha_valid == 1)) {
     
       // Send company information to database
 
@@ -221,9 +220,7 @@ $(document).on('submit', '#form_company.add', function(e){
   });
 
 
-function formSubmit() {
-  // submit the form which now includes a g-recaptcha-response input
-}
+
 
 var form_company = $('#form_company');
   // Add company submit form

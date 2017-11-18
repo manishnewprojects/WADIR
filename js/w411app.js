@@ -1,7 +1,11 @@
+
+// Copyright (C) 2017, Manish Vaidya 
+
 $(document).ready(function(){
 
-getLocation();
+// Get location of the user  
 
+getLocation();
 function getLocation(){
 if (navigator.geolocation) {
           var options = {timeout:60000};
@@ -18,6 +22,8 @@ if (navigator.geolocation) {
   }
 }   
 
+// Function to provide fake lat/long if none are available - resolves to middle of Pacific Ocean  
+
 function errorHandler(err) {
   pos = {
               lat:-122,
@@ -33,8 +39,8 @@ function errorHandler(err) {
   }
 }
 
+// Show initial table as a success calback from GetLocation()  
 function send_values(position) {
-
    var wadir_companies =  $('#wadir_companies').DataTable( {
     "ajax": "php/data.php?job=get_companies",
     "columns": [
@@ -82,7 +88,9 @@ function send_values(position) {
 
 }
 
- var wadir_companies_edit =  $('#wadir_companies_edit').DataTable( {
+// Edit listing code block  
+
+var wadir_companies_edit =  $('#wadir_companies_edit').DataTable( {
     "ajax": "php/data.php?job=get_companies_edit",
     "columns": [
       { "data": "name"},
@@ -106,36 +114,22 @@ function send_values(position) {
     "order":[[1,'asc']]
   });
 
- var form_company = $('#form_company'); 
+// Add listing code block  
 
-
-
-
-  
-
-
+var form_company = $('#form_company'); 
 $(document).on('submit', '#form_company.add', function(e){
     
     e.preventDefault();
-
-
-  
-
     var form_data = $('#form_company').serialize();
     var form_fields=JSON.stringify(form_data);
     var whatsapp_entered = form_fields.substring(form_fields.lastIndexOf("whatsapp=")+9,form_fields.lastIndexOf("&id"));
 
-                          // verify phone number via AJAX call
-                          
-
-              
    form_fully_valid = 0; captcha_valid = 1;
    // Validate form 
     grecaptcha.reset();
     grecaptcha.execute();
 
-
-    console.log("captcha_valid", captcha_valid);
+    //console.log("captcha_valid", captcha_valid);
 
     if ((form_company.valid() == true) && (captcha_valid == 1)) {
     
@@ -177,9 +171,6 @@ $(document).on('submit', '#form_company.add', function(e){
                                       type:         'get'
                                     });
                                     
-                                    
-                                 
-
                                     request.done(function(output){
                                         if (output.result == 'success'){
                                           var dialog=JSON.stringify(form_data);
@@ -212,14 +203,8 @@ $(document).on('submit', '#form_company.add', function(e){
                             }).fail(function() {
                                console.log( "error - phone check failed" );
                              } );
-                         
-
      }
-
-     
   });
-
-
 
 
 var form_company = $('#form_company');

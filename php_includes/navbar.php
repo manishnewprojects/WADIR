@@ -1,4 +1,4 @@
-<!-- Material Kit Navbar -->
+<!-- Copyright (C) 2017, Manish Vaidya -->
 
 <nav class="navbar navbar-fixed-top">
   <div class="container-fluid">
@@ -29,11 +29,11 @@
           <a rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/whats411" target="_blank" class="btn btn-white btn-simple btn-just-icon">
             <i class="fa fa-facebook-square"></i>
           </a>
-      </li>
-       
-             
+      </li> 
       </ul>
       </div><!--/.nav-collapse -->
     </div>
   </nav>
+  <br>
+
  

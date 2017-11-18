@@ -1,3 +1,5 @@
+<!-- Copyright (C) 2017, Manish Vaidya -->
+
 <html lang="en">
  
 <head>
@@ -6,7 +8,7 @@
 <!-- Basic Page Needs -->
   <meta charset="utf-8">
   <title> Whats411.com - World's first WhatsApp business directory </title>
-  <meta name="description" content="Whatsapp business directory">
+  <meta name="description" content="WhatsApp business directory">
   <meta name="author" content="@fantasticmv">
 
 <!-- Favicon -->
@@ -58,11 +60,8 @@
 <script charset="utf-8" type="text/javascript" src="js/w411app.js"></script>
  
 
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ 
-  <script src="js/nouislider.min.js" type="text/javascript"></script>-->
-
-  <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-  <script src="js/material-kit.js" type="text/javascript"></script>
+<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+<script src="js/material-kit.js" type="text/javascript"></script>
 
 <script type="text/javascript">
           $().ready(function(){
@@ -77,7 +76,6 @@
 </script>
 
 <!-- Google Maps API  AIzaSyAQYDH6cEPDmnK6f1Hl2NHqWcRPUIftGJs -->
-
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQYDH6cEPDmnK6f1Hl2NHqWcRPUIftGJs"></script>
 

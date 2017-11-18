@@ -6,8 +6,8 @@ include dirname(__FILE__)."/../php_includes/addr_lookup.php";
 // Database details
 $db_server   = 'localhost';
 $db_username = 'root';
-//$db_password = 'EHI4qackJBRK';
-$db_password = '120+Skipper';
+//$db_password = '*****qackJBRK';
+$db_password = '****pper';
 $db_name     = 'w411_listings_database';
 
 // Get job (and id)

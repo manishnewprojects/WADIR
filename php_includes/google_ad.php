@@ -1,6 +1,5 @@
 <div align="center">
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- WADIR_AD -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-9331817746326065"

@@ -4,6 +4,16 @@
 $(document).ready(function(){
 
 // Get location of the user  
+ 
+// Show loading message
+  function show_loading_message(){
+    $('#loading_container').show();
+  }
+  // Hide loading message
+  function hide_loading_message(){
+    $('#loading_container').hide();
+  }
+
 
 getLocation();
 function getLocation(){
@@ -41,6 +51,7 @@ function errorHandler(err) {
 
 // Show initial table as a success calback from GetLocation()  
 function send_values(position) {
+   show_loading_message();
    var wadir_companies =  $('#wadir_companies').DataTable( {
     "ajax": "php/data.php?job=get_companies",
     "columns": [
@@ -85,7 +96,8 @@ function send_values(position) {
       },
       
   });
-
+    hide_loading_message();
+  
 }
 
 // Edit listing code block  

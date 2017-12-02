@@ -81,7 +81,6 @@ if ($job != ''){
       }  
     }  
  } elseif ($job == 'get_company') {
-
     // Get company
     if ($id == ''){
       $result  = 'error';
@@ -95,6 +94,8 @@ if ($job != ''){
       $result  = 'error';
       $message = 'query error';
     } else {
+      hide_loading_message();
+
       $result  = 'success';
       $message = 'query success';
       while ($company = mysqli_fetch_array($query)){
@@ -249,7 +250,6 @@ if ($job != ''){
   // Close database connection
   mysqli_close($db_connection);
 }
- 
 
 // Prepare data
 $data = array(

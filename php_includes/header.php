@@ -63,7 +63,7 @@
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <script src="js/material-kit.js" type="text/javascript"></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
           $().ready(function(){
             // the body of this function is in js/material-kit.js
             materialKit.initSliders();
@@ -73,7 +73,7 @@
                 (window).on('scroll', materialKitDemo.checkScrollForParallax);
             }
           });
-</script>
+</script> -->
 
 <!-- Google Maps API  AIzaSyAQYDH6cEPDmnK6f1Hl2NHqWcRPUIftGJs -->
 

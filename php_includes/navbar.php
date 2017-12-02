@@ -1,5 +1,6 @@
+ 
 <!-- Copyright (C) 2017, Manish Vaidya -->
-
+  
 <nav class="navbar navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -9,7 +10,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <a class="navbar-left" href="index.php"> <img style="  width: 250px;" src="images/w411-banner.png" </a> 
+      <a class="navbar-left" href="index.php"> <img style="width:250px;" src="images/w411-banner.jpg" </a> 
     </div>
     <div id="navigation-index" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
@@ -35,5 +36,16 @@
     </div>
   </nav>
   <br>
-
  
+
+
+
+
+
+
+
+
+
+
+
+

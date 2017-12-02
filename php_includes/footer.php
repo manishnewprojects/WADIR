@@ -32,6 +32,8 @@
               &copy; 2017, made with <i class="material-icons">favorite</i> in California 
           </div>
       </div>
-  </footer>
 
+
+
+  </footer>
   </div>

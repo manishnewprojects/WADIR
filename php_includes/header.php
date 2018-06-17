@@ -7,7 +7,7 @@
 
 <!-- Basic Page Needs -->
   <meta charset="utf-8">
-  <title> Whats411.com - World's first WhatsApp business directory </title>
+  <title> JustMessage - World's first WhatsApp business directory </title>
   <meta name="description" content="WhatsApp business directory">
   <meta name="author" content="@fantasticmv">
 
@@ -15,7 +15,7 @@
   <link rel="icon" type="image/ico" href="images/favicon.ico">
 
 <!-- Mobile Specific Metas -->
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
 <!-- Website Fonts & icons -->
   <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
@@ -26,16 +26,16 @@
 
  
 <!-- CSS Files -->
+<link rel="stylesheet" type="text/css" href="css/material-kit.css">
+<link rel="stylesheet" type="text/css" href="css/mv_css_defines.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
  
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/material-kit.css">
-<link rel="stylesheet" type="text/css" href="css/mv_css_defines.css">
-
+ 
 
 
 <!-- JQuery-->
@@ -100,6 +100,17 @@
 
   gtag('config', 'UA-109676187-1');
 </script>
+
+<!-- Global site tag (gtag.js) - AdWords: 975678727 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-975678727"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-975678727');
+</script>
+
 
 </head>
  

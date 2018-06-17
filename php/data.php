@@ -6,8 +6,8 @@ include dirname(__FILE__)."/../php_includes/addr_lookup.php";
 // Database details
 $db_server   = 'localhost';
 $db_username = 'root';
-$db_password = '*********';
-$db_name     = 'w411_listings_database';
+$db_password = 'Abcd+1234';
+$db_name     = 'justmessage_business';
 
 // Get job (and id)
 $job = '';
@@ -67,7 +67,7 @@ if ($job != ''){
         $wa_str = '';
         $wa_str = '<a href="https://api.whatsapp.com/send?phone=';
         $wa_str .= $company['whatsapp'];
-        $wa_str .= '&text=New customer query via whats411.com! Response requested"> Send WhatsApp message</a>';
+        $wa_str .= '&text=Message from customer. Reply requested. Message sent via Justmessage.in"> Send WhatsApp message</a>';
         $mysql_data[] = array(
           "name"            => $company['name'],
           "owner"           => $company['owner'],
@@ -94,7 +94,7 @@ if ($job != ''){
       $result  = 'error';
       $message = 'query error';
     } else {
-      hide_loading_message();
+      //hide_loading_message();
 
       $result  = 'success';
       $message = 'query success';

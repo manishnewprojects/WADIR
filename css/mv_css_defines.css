@@ -3,7 +3,9 @@
     display: none;
 }
 
-
+td {
+  font-size: 120%;
+}
 
 hr.style1{
 	border-top: 1px solid #8c8b8b;
@@ -34,7 +36,7 @@ table.datatable tbody td.functions .function_buttons a {
   display: inline-block;
   background-color: #999;
   font-family: 'FontAwesome', Arial, Helvetica, sans-serif;
-  font-weight: normal;
+  font-weight: bolder;
   line-height: 29px;
   text-align: center;
   color: #fff;
@@ -60,4 +62,18 @@ table.datatable tbody td.functions .function_buttons span {
   display: none;
 }
 
+
+#right-float2 
+{
+   float: right;
+   position: relative;
+   clear:right;
+}
+
+#RightFloatAds{
+right: 0px;
+position: fixed;
+text-align: center;
+top: 0px;
+}
  

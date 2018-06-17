@@ -22,12 +22,12 @@
           <a href="edit_delete_listing.php"> Modify business listing </a>
       </li>
       <li>
-          <a rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/whatsapp411" target="_blank" class="btn btn-white btn-simple btn-just-icon">
+          <a rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/justmessagein" target="_blank" class="btn btn-white btn-simple btn-just-icon">
             <i class="fa fa-twitter"></i>
           </a>
       </li>
       <li>
-          <a rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/whats411" target="_blank" class="btn btn-white btn-simple btn-just-icon">
+          <a rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/justmessagein" target="_blank" class="btn btn-white btn-simple btn-just-icon">
             <i class="fa fa-facebook-square"></i>
           </a>
       </li> 
@@ -36,7 +36,6 @@
     </div>
   </nav>
   <br>
- 
 
 
 

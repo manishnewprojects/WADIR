@@ -7,8 +7,8 @@
           <nav class="pull-left">
               <ul>
           <li>
-            <a href="http://www.whats411.com">
-              Whats411.com
+            <a href="http://www.justmessage.in">
+              Justmessage
             </a>
           </li>
           <li>
@@ -17,7 +17,7 @@
             </a>
           </li>
          <!-- <li>
-            <a href="http://blog.whats411.com">
+            <a href="http://blog.justmessage.in">
                Blog
             </a>
           </li> -->
@@ -29,7 +29,7 @@
               </ul>
           </nav>
           <div class="copyright pull-right">
-              &copy; 2017, made with <i class="material-icons">favorite</i> in California 
+              &copy; 2018, made with <i class="material-icons">favorite</i> in California 
           </div>
       </div>
 

@@ -15,6 +15,24 @@ $(document).ready(function(){
   }
 
 
+// Show message
+  function show_message(message_text, message_type){
+    $('#message').html('<p>' + message_text + '</p>').attr('class', message_type);
+    $('#message_container').show();
+    if (typeof timeout_message !== 'undefined'){
+      window.clearTimeout(timeout_message);
+    }
+    timeout_message = setTimeout(function(){
+      hide_message();
+    }, 8000);
+  }
+  // Hide message
+  function hide_message(){
+    $('#message').html('').attr('class', '');
+    $('#message_container').hide();
+  }
+
+
 getLocation();
 function getLocation(){
 if (navigator.geolocation) {
@@ -98,6 +116,24 @@ function send_values(position) {
   });
     hide_loading_message();
   
+}
+
+//Code block to send search terms back to the server, greater than length of 10
+$('#wadir_companies').on('search.dt', function() {
+    var value = $('.dataTables_filter input').val();
+    if (value.length > 10)
+      saveToFile(value); // <-- the value
+      //console.log(value);
+
+}); 
+
+function saveToFile(data){
+  jsonString = JSON.stringify(data);
+  $.ajax({
+    url: 'php/savetofile.php',
+    data : {'jsonString':jsonString},
+    type: 'POST'
+  });
 }
 
 // Edit listing code block  
@@ -194,7 +230,7 @@ $(document).on('submit', '#form_company.add', function(e){
                                           var bootbox_message = 'Your business <b>'+ dialog_name +'</b> added succesfully!';
                                           bootbox.alert(bootbox_message, 
                                                       function(){
-                                                            window.open('http://whats411.com', '_self');
+                                                            window.open('http://justmessage.in', '_self');
                                                       });
                                         }
                                        else {
@@ -248,7 +284,7 @@ var form_company = $('#form_company');
             var bootbox_message = 'Listing for your business <b>'+ dialog_name +'</b> updated succesfully!';
             bootbox.alert(bootbox_message, 
                         function(){
-                              window.open('http://whats411.com', '_self');
+                              window.open('http://justmessage.in', '_self');
                         });
           }
          else {
@@ -294,7 +330,7 @@ var form_company = $('#form_company');
             var bootbox_message = 'Listing for your business <b>'+ dialog_name +'</b> DELETED!';
             bootbox.alert(bootbox_message, 
                         function(){
-                              window.open('http://whats411.com', '_self');
+                              window.open('http://justmessage.in', '_self');
                         });
           }
          else {
@@ -343,12 +379,12 @@ $(document).on('click', '.function_edit a', function(e){
       window.location.replace('edit_listing.php?company_curr_info=' + company_curr_info + '&id=' + id)
 
       } else {
-        show_message('Information request failed', 'error');
+        //show_message('Information request failed', 'error');
       }
     });
 
     request.fail(function(jqXHR, textStatus){
-      show_message('Information request failed: ' + textStatus, 'error');
+      //show_message('Information request failed: ' + textStatus, 'error');
     });
   });
 
@@ -374,12 +410,12 @@ $(document).on('click', '.function_delete a', function(e){
       window.location.replace('delete_listing.php?company_curr_info=' + company_curr_info + '&id=' + id)
 
       } else {
-        show_message('Information request failed', 'error');
+        //show_message('Information request failed', 'error');
       }
     });
 
     request.fail(function(jqXHR, textStatus){
-      show_message('Information request failed: ' + textStatus, 'error');
+      //show_message('Information request failed: ' + textStatus, 'error');
     });
   });
 

@@ -4,10 +4,13 @@ include dirname(__FILE__)."/../php_includes/addr_lookup.php";
 
 
 // Database details
-$db_server   = 'localhost';
-$db_username = 'root';
-$db_password = '120!Skipper';
-$db_name     = 'w411_listings_database';
+
+
+include dirname(__FILE__)."/../php/secretInfo.php";
+$db_password = PASSWORD;  //defined in secretInfo.php
+$db_server   = SERVERNAME;
+$db_username = USERNAME;
+$db_name     = DBNAME;
 
 // Get job (and id)
 $job = '';
